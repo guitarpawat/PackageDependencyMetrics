@@ -18,10 +18,10 @@ public class Main {
     }
 
     public static void print(PackageStat root) {
-        printStat(root);
+        if(!root.getPackageName().isEmpty()) {
+            printStat(root);
+        }
         for(PackageStat ps : root.getSubPackages()) {
-            if(ps.getPackageName().isEmpty()) continue;
-            System.out.println("===========================================");
             print(ps);
         }
     }
@@ -32,5 +32,6 @@ public class Main {
         System.out.println("No. of abstract class: "+ps.getAbstracts());
         System.out.println("No. of imports: "+ps.getImports());
         System.out.println("No. of class uses: "+usage.getOrDefault(ps.getPackageName(), 0));
+        System.out.println("===========================================");
     }
 }
